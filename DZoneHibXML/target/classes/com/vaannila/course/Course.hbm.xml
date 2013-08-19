@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 12, 2013 1:32:53 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.vaannila.course.Course" table="COURSE">
+        <id name="courseId" type="java.lang.Long">
+            <column name="COURSE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="courseName" type="java.lang.String">
+            <column name="COURSE_NAME" />
+        </property>
+    </class>
+</hibernate-mapping>

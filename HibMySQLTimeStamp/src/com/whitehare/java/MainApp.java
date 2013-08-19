@@ -1,0 +1,153 @@
+package com.whitehare.java;
+
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.whitehare.util.HibernateUtil;
+
+public class MainApp
+{
+
+  static private Logger logger = Logger.getLogger("demo");
+
+  /**
+   * @param args
+   */
+  public static void main(String[] args)
+  {
+    MainApp obj = new MainApp();
+
+    Long courseId1 = obj.saveCourse("Physics");
+    Long courseId2 = obj.saveCourse("Chemistry");
+    Long courseId3 = obj.saveCourse("Maths");
+    obj.listCourse();
+    obj.updateCourse(courseId3, "Mathematics");
+    obj.deleteCourse(courseId2);
+    obj.listCourse();
+  }
+
+  /**
+   * === C ===
+   * 
+   * @param courseName
+   * @return
+   */
+  public Long saveCourse(String courseName)
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    Long courseId = null;
+    logger.info("===== Create");
+
+    try
+    {
+      transaction = session.beginTransaction();
+      Course course = new Course();
+      course.setCourseName(courseName);
+      Date myDate = new Date();
+      logger.info("My Date: " + myDate);
+      course.setMyDate(myDate);
+      courseId = (Long) session.save(course);
+      transaction.commit();
+
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+    return courseId;
+  }
+
+  /**
+   * === R ===
+   */
+  public void listCourse()
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    try
+    {
+      transaction = session.beginTransaction();
+      List courses = session.createQuery("from Course").list();
+      for (Iterator iterator = courses.iterator(); iterator.hasNext();)
+      {
+        Course course = (Course) iterator.next();
+        System.out.println(course.getCourseName() + " :\t" + course.getReleasedate() + " :\t" + course.getMyDate());
+      }
+      transaction.commit();
+
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+
+    } finally
+    {
+      session.close();
+    }
+  }
+
+  /**
+   * === U ===
+   * 
+   * @param courseId
+   * @param courseName
+   */
+  public void updateCourse(Long courseId, String courseName)
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    try
+    {
+      transaction = session.beginTransaction();
+      Course course = (Course) session.get(Course.class, courseId);
+      course.setCourseName(courseName);
+      Date myDate = new Date();
+      course.setMyDate(myDate);
+      transaction.commit();
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+    } finally
+    {
+      session.close();
+    }
+  }
+
+  /**
+   * === D ===
+   * 
+   * @param courseId
+   */
+  public void deleteCourse(Long courseId)
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    Transaction transaction = null;
+    try
+    {
+      transaction = session.beginTransaction();
+      Course course = (Course) session.get(Course.class, courseId);
+      session.delete(course);
+      transaction.commit();
+    } catch (HibernateException e)
+    {
+      transaction.rollback();
+      e.printStackTrace();
+
+    } finally
+    {
+      session.close();
+
+    }
+  }
+}
