@@ -1,13 +1,13 @@
 package com.whitehare.course;
 
-import java.util.Iterator;
-import java.util.List;
+import com.whitehare.util.HibernateUtil;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.whitehare.util.HibernateUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class MainApp
 {
@@ -22,6 +22,8 @@ public class MainApp
     Long courseId1 = obj.saveCourse("Physics");
     Long courseId2 = obj.saveCourse("Chemistry");
     Long courseId3 = obj.saveCourse("Maths");
+    Long courseId4 = obj.saveCourse("History");
+    Long courseId5 = obj.saveCourse("English");
     obj.listCourse();
     obj.updateCourse(courseId3, "Mathematics");
     obj.deleteCourse(courseId2);
@@ -30,9 +32,8 @@ public class MainApp
 
   /**
    * === C ===
-   * 
+   *
    * @param courseName
-   * @return
    */
   public Long saveCourse(String courseName)
   {
@@ -69,7 +70,7 @@ public class MainApp
     {
       transaction = session.beginTransaction();
       List courses = session.createQuery("from Course").list();
-      for (Iterator iterator = courses.iterator(); iterator.hasNext();)
+      for (Iterator iterator = courses.iterator(); iterator.hasNext(); )
       {
         Course course = (Course) iterator.next();
         System.out.println(course.getCourseName());
@@ -89,7 +90,7 @@ public class MainApp
 
   /**
    * === U ===
-   * 
+   *
    * @param courseId
    * @param courseName
    */
@@ -115,7 +116,7 @@ public class MainApp
 
   /**
    * === D ===
-   * 
+   *
    * @param courseId
    */
   public void deleteCourse(Long courseId)
