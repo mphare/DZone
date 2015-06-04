@@ -32,6 +32,14 @@ local.properties
 .buildpath
 
 # -----------------
+# Java Files
+# -----------------
+*.class
+
+# Object and Archive files
+*.[oa]
+
+# -----------------
 # Package Files
 # -----------------
 *.jar
@@ -39,8 +47,6 @@ local.properties
 *.ear
 *.db
 
-# Object and Archive files
-*.[oa]
 
 # -----------------
 # Windows
