@@ -7,11 +7,13 @@
 bin/**
 tmp/**
 tmp/**/*
+**/bin/**
 
 *.tmp
 *.bak
 *.swp
 *~.nib
+*.log
 
 local.properties
 .classpath
@@ -32,12 +34,20 @@ local.properties
 .buildpath
 
 # -----------------
-# Java Files
+# IntelliJ
+# -----------------
+.idea_modules/
+.settings/
+.gradle/
+logs/
+.idea/
+*.iml
+*.apk
+
+# -----------------
+# Java
 # -----------------
 *.class
-
-# Object and Archive files
-*.[oa]
 
 # -----------------
 # Package Files
@@ -47,6 +57,8 @@ local.properties
 *.ear
 *.db
 
+# Object and Archive files
+*.[oa]
 
 # -----------------
 # Windows
@@ -63,3 +75,4 @@ Desktop.ini
 ._*
 .Spotlight-V100
 .Trashes
+/target/
