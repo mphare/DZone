@@ -22,7 +22,7 @@ public class MainApp
     {
       transaction = session.beginTransaction();
 
-      Address address = new Address("OMR Road", "Chennai", "TN", "600097");
+      Address address = new Address("OMR Road", "Chennai", "TN", "640097");
 
       Student student = new Student("Eswar", address);
       session.save(student);

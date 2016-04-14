@@ -16,7 +16,7 @@ public class Address
 
   }
 
-  @Column(name = "address_street")
+  @Column(name = "address_street", nullable = false, length=250)
   public String getStreet()
   {
     return street;
@@ -27,7 +27,7 @@ public class Address
     this.street = street;
   }
 
-  @Column(name = "address_city")
+  @Column(name = "address_city", nullable = false, length=50)
   public String getCity()
   {
     return city;
@@ -38,7 +38,7 @@ public class Address
     this.city = city;
   }
 
-  @Column(name = "address_state")
+  @Column(name = "address_state", nullable = false, length=50)
   public String getState()
   {
     return state;
@@ -49,7 +49,7 @@ public class Address
     this.state = state;
   }
 
-  @Column(name = "address_zipcode")
+  @Column(name = "address_zipcode", nullable=false, length=10)
   public String getZipcode()
   {
     return zipcode;
