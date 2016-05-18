@@ -5,11 +5,11 @@
 <hibernate-mapping>
     <class name="com.vaannila.course.Course" table="COURSE">
         <id name="courseId" type="java.lang.Long">
-            <column name="COURSE_ID" />
-            <generator class="assigned" />
+            <column name="course_id" />
+            <generator class="native" />
         </id>
         <property name="courseName" type="java.lang.String">
-            <column name="COURSE_NAME" />
+            <column name="course_name" />
         </property>
     </class>
 </hibernate-mapping>

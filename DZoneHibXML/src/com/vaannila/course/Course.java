@@ -22,7 +22,7 @@ public class Course implements java.io.Serializable
 
   public long getCourseId()
   {
-    return courseId;
+    return this.courseId;
   }
 
   public void setCourseId(long courseId)
@@ -32,7 +32,7 @@ public class Course implements java.io.Serializable
 
   public String getCourseName()
   {
-    return courseName;
+    return this.courseName;
   }
 
   public void setCourseName(String courseName)
