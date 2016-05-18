@@ -22,6 +22,8 @@ public class MainApp
     Long courseId1 = obj.saveCourse("Physics");
     Long courseId2 = obj.saveCourse("Chemistry");
     Long courseId3 = obj.saveCourse("Maths");
+    Long courseId4 = obj.saveCourse("History");
+    Long courseId5 = obj.saveCourse("English");
     obj.listCourse();
     obj.updateCourse(courseId3, "Mathematics");
     obj.deleteCourse(courseId2);
