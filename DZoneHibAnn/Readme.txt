@@ -1,11 +1,16 @@
 
-DZone Hibernate Annotations Tutorial
-
-All Hibernate Tutorials:
-https://dzone.com/tutorials/java/hibernate/hibernate-example/hibernate-example.html
-
-This Tutorial:
+Where the tutorial is
+---------------------- 
 http://dzone.com/tutorials/java/hibernate/hibernate-example/hibernate-annotations-1.html
 
+All DZone Hibernate Tutorials
+-----------------------------
+https://dzone.com/tutorials/java/hibernate/hibernate-example/hibernate-example.html
 
-root/<uBasic>
+What it is
+----------
+Basic hibernate support for a single database, single table
+
+Concepts
+--------
+CRUD with Hibernate, MySQL
